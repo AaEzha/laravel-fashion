@@ -29,3 +29,12 @@ Route::get('/about', function () {
 Route::get('/blank', function () {
     return view('blank');
 })->name('blank');
+
+Route::name('admin.')->middleware('can:admin')->prefix('admin')->group(function() {
+    Route::get('/category', 'BackEndController@category')->name('category');
+    Route::post('/category', 'BackEndController@category');
+    Route::get('/product', 'BackEndController@product')->name('product');
+    Route::post('/product', 'BackEndController@product');
+    Route::get('/comment', 'BackEndController@comment')->name('comment');
+    Route::post('/comment', 'BackEndController@comment');
+});
