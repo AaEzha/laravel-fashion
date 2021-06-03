@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Member\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::name('admin.')->middleware('can:admin')->prefix('admin')->group(function(
     Route::post('/product', 'BackEndController@product');
     Route::get('/comment', 'BackEndController@comment')->name('comment');
     Route::post('/comment', 'BackEndController@comment');
+});
+
+Route::name('member.')->middleware('can:admin')->prefix('member')->group(function() {
+    Route::get('/', [MemberController::class, 'index'])->name('index');
+    Route::post('/', [MemberController::class, 'index']);
 });
 
 Route::get('/', 'FrontEndController@index')->name('front');

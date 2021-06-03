@@ -11,7 +11,4 @@
 |
 */
 
-Route::name('member.')->middleware('can:admin')->prefix('member')->group(function() {
-    Route::get('/', 'MemberController@index')->name('index');
-    Route::post('/', 'MemberController@index');
-});
+
