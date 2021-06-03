@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('front');
+// });
+
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -38,3 +41,8 @@ Route::name('admin.')->middleware('can:admin')->prefix('admin')->group(function(
     Route::get('/comment', 'BackEndController@comment')->name('comment');
     Route::post('/comment', 'BackEndController@comment');
 });
+
+Route::get('/', 'FrontEndController@index')->name('front');
+Route::get('/{category:slug}', 'FrontEndController@category')->name('kategori');
+Route::get('/{category:slug}/{product:slug}', 'FrontEndController@product')->name('produk');
+Route::post('/{product:slug}', 'FrontEndController@store')->name('produk.store');
