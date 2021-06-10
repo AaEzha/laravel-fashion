@@ -9,8 +9,14 @@ use GroceryCrud\Core\GroceryCrud;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class BackEndController extends Controller
+class HalamanAdminController extends Controller
 {
+    public function index()
+    {
+
+        return view('home');
+    }
+
     private function _getDatabaseConnection() {
         $databaseConnection = config('database.default');
         $databaseConfig = config('database.connections.' . $databaseConnection);
@@ -32,7 +38,7 @@ class BackEndController extends Controller
         $config = config('grocerycrud');
 
         $crud = new GroceryCrud($config, $database);
-
+        $crud->unsetExport()->unsetPrint()->unsetFilters()->unsetSettings();
         return $crud;
     }
 
@@ -57,12 +63,12 @@ class BackEndController extends Controller
 
     public function category()
     {
-        $title = "Categories";
+        $title = "Kategori Pakaian";
 
         $crud = $this->_getGroceryCrudEnterprise();
         $crud->setTable('categories');
         $crud->setSkin('bootstrap-v4');
-        $crud->setSubject('Category', 'Categories');
+        $crud->setSubject('Kategori', 'Kategori Pakaian');
         $crud->columns(['name', 'image']);
         $crud->addFields(['name', 'content', 'image']);
         $crud->requiredFields(['name', 'content', 'image']);
@@ -81,6 +87,7 @@ class BackEndController extends Controller
             $data->save();
             return $s;
         });
+
         $output = $crud->render();
 
         return $this->_show_output($output, $title);
@@ -88,12 +95,12 @@ class BackEndController extends Controller
 
     public function product()
     {
-        $title = "Products";
+        $title = "Pakaian";
 
         $crud = $this->_getGroceryCrudEnterprise();
         $crud->setTable('products');
         $crud->setSkin('bootstrap-v4');
-        $crud->setSubject('Product', 'Products');
+        $crud->setSubject('Pakaian', 'Pakaian');
         $crud->columns(['category_id', 'name', 'content', 'image']);
         $crud->addFields(['category_id', 'name', 'content', 'image']);
         $crud->requiredFields(['category_id', 'name', 'content', 'image']);
@@ -124,12 +131,12 @@ class BackEndController extends Controller
 
     public function comment()
     {
-        $title = "Comments";
+        $title = "Komentar";
 
         $crud = $this->_getGroceryCrudEnterprise();
         $crud->setTable('product_comments');
         $crud->setSkin('bootstrap-v4');
-        $crud->setSubject('Comment', 'Comments');
+        $crud->setSubject('Komentar', 'Komentar');
         // $crud->unsetAdd();
         $crud->columns(['product_id', 'name', 'email', 'comment']);
         $crud->addFields(['product_id', 'name', 'email', 'comment']);

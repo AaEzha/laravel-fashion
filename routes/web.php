@@ -14,41 +14,21 @@ use Modules\Member\Http\Controllers\MemberController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('front');
-// });
-
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HalamanAdminController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/blank', function () {
-    return view('blank');
-})->name('blank');
-
 Route::name('admin.')->middleware('can:admin')->prefix('admin')->group(function() {
-    Route::get('/category', 'BackEndController@category')->name('category');
-    Route::post('/category', 'BackEndController@category');
-    Route::get('/product', 'BackEndController@product')->name('product');
-    Route::post('/product', 'BackEndController@product');
-    Route::get('/comment', 'BackEndController@comment')->name('comment');
-    Route::post('/comment', 'BackEndController@comment');
+    Route::get('/category', 'HalamanAdminController@category')->name('category');
+    Route::post('/category', 'HalamanAdminController@category');
+    Route::get('/product', 'HalamanAdminController@product')->name('product');
+    Route::post('/product', 'HalamanAdminController@product');
+    Route::get('/comment', 'HalamanAdminController@comment')->name('comment');
+    Route::post('/comment', 'HalamanAdminController@comment');
 });
 
-Route::name('member.')->middleware('can:admin')->prefix('member')->group(function() {
-    Route::get('/', [MemberController::class, 'index'])->name('index');
-    Route::post('/', [MemberController::class, 'index']);
-});
-
-Route::get('/', 'FrontEndController@index')->name('front');
-Route::get('/{category:slug}', 'FrontEndController@category')->name('kategori');
-Route::get('/{category:slug}/{product:slug}', 'FrontEndController@product')->name('produk');
-Route::post('/{product:slug}', 'FrontEndController@store')->name('produk.store');
+Route::get('/', 'HalamanVisitorController@index')->name('front');
+Route::get('/{category:slug}', 'HalamanVisitorController@kategori')->name('kategori');
+Route::get('/{category:slug}/{product:slug}', 'HalamanVisitorController@pakaian')->name('produk');
+Route::post('/{product:slug}', 'HalamanVisitorController@store')->name('produk.store');

@@ -7,23 +7,23 @@ use App\Product;
 use App\ProductComment;
 use Illuminate\Http\Request;
 
-class FrontEndController extends Controller
+class HalamanVisitorController extends Controller
 {
     public function index()
     {
         $data = Category::all();
-        return view('frontend.front', compact('data'));
+        return view('halaman_tamu.index', compact('data'));
     }
 
-    public function category(Category $category)
+    public function kategori(Category $category)
     {
         $prods = $category->products;
-        return view('frontend.category', compact('category','prods'));
+        return view('halaman_tamu.kategori', compact('category','prods'));
     }
 
-    public function product(Category $category, Product $product)
+    public function pakaian(Category $category, Product $product)
     {
-        return view('frontend.product', compact('category','product'));
+        return view('halaman_tamu.pakaian', compact('category','product'));
     }
 
     public function store(Product $product, Request $request)

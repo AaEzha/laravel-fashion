@@ -1,4 +1,4 @@
-@extends('frontend.layout')
+@extends('halaman_tamu.layout')
 
 @section('content')
 
@@ -10,7 +10,7 @@
       <div class="carousel-item active">
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Welcome to <span>{{ config('app.name') }}</span></h2>
-          <p class="animate__animated animate__fadeInUp">Ubah halaman ini di resources/views/frontend/front.blade.php</p>
+          <p class="animate__animated animate__fadeInUp">Ubah halaman ini di resources/views/halaman_tamu/index.blade.php</p>
           <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
         </div>
       </div>

@@ -50,7 +50,6 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{{ route('front') }}">Home</a></li>
-          <li><a href="{{ route('front') }}#hero">Fashion</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->

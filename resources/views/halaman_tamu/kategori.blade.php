@@ -1,4 +1,4 @@
-@extends('frontend.layout')
+@extends('halaman_tamu.layout')
 
 @section('content')
 

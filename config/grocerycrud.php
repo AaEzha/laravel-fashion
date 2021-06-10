@@ -6,7 +6,7 @@ return [
     // Dutch, English, French, German, Greek, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean,
     // Lithuanian, Mongolian, Norwegian, Persian, Polish, Portuguese, Brazilian Portuguese, Romanian,
     // Russian, Slovak, Spanish, Thai, Turkish, Ukrainian, Vietnamese
-    'default_language'  => 'English',
+    'default_language'  => 'Indonesian',
 
     // This is the assets folder where all the JavaScript, CSS, images and font files are located
     'assets_folder' => env('APP_URL') . '/assets/grocery-crud/',
@@ -22,7 +22,7 @@ return [
     'paging_options' => ['10', '25', '50', '100'],
 
     // The environment is important so we can have specific configurations for specific environments
-    'environment' => 'development',
+    'environment' => 'production',
 
     // This is basically in order to have a php cache. Be aware that in case you disable the php cache
     // things will get too slow
